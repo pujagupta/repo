@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">My Application1</string>
+    <string name="list_heading">List of items</string>
 </resources>

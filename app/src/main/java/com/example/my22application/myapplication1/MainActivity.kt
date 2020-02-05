@@ -6,10 +6,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
-    val animals: ArrayList<String> = ArrayList()
+    //var animals: ArrayList<String> = ArrayList()
+    var animals = ArrayList<String>()
     private lateinit var context: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,21 +29,12 @@ class MainActivity : AppCompatActivity() {
         recycler_view.adapter = AnimalAdapter(animals, this)
     }
 
-    fun addItems() {
-        animals.add("dog")
-        animals.add("cat")
-        animals.add("owl")
-        animals.add("cheetah")
-        animals.add("raccoon")
-        animals.add("bird")
-        animals.add("snake")
-        animals.add("lizard")
-        animals.add("hamster")
-        animals.add("bear")
+    private fun addItems() {
+        animals = ArrayList<String>(Arrays.asList(*resources.getStringArray(R.array.animal_list)))
     }
 
-    fun goToDetailPage(name: String){
-        val intent = Intent(this@MainActivity,DetailActivity::class.java);
+    fun goToDetailPage(name: String) {
+        val intent = Intent(this@MainActivity, DetailActivity::class.java);
         intent.putExtra("Animal", name)
         startActivity(intent);
     }

@@ -3,6 +3,7 @@ package com.example.my22application.myapplication1
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_detail.*
 
 class DetailActivity : AppCompatActivity() {
     lateinit var textView: TextView
@@ -10,12 +11,11 @@ class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
-        textView = findViewById(R.id.display_text) as TextView
         displayDetailText()
     }
 
     private fun displayDetailText() {
         val animalName = intent.getStringExtra("Animal")
-        textView.text = animalName + " is selected."
+        display_text.text = animalName + " is selected."
     }
 }

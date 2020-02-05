@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.adapter_recyclerview.view.*
 class AnimalAdapter(val items : ArrayList<String>, val context: Context) : RecyclerView.Adapter<ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder?.tvAnimalType?.text = items.get(position)
+        holder.tvAnimalType.text = items.get(position)
         holder.bind(items.get(position));
     }
 
@@ -24,11 +24,11 @@ class AnimalAdapter(val items : ArrayList<String>, val context: Context) : Recyc
     }
 }
 
-class ViewHolder (view: View, val context: Context) : RecyclerView.ViewHolder(view) {
+class ViewHolder (itemView: View, val context: Context) : RecyclerView.ViewHolder(itemView) {
     // Holds the TextView that will add each animal to
-    val tvAnimalType = view.tv_animal_type
+    val tvAnimalType = itemView.tv_animal_type
     fun bind(itemClickced: String) {
-        tvAnimalType.setOnClickListener(View.OnClickListener {
+        itemView.setOnClickListener(View.OnClickListener {
             (context as MainActivity).goToDetailPage(itemClickced)
 
         })
